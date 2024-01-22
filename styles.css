@@ -39,6 +39,7 @@ body {
 
 .end-game-text {
   /* height: 40% */
+  text-transform: uppercase;
 }
 
 .gameboard {
@@ -74,4 +75,10 @@ body {
 
 .whole-game {
   width: 500px;
+}
+
+.cell-bomb {
+  background-image: url("./images/bomb.png");
+  background-size: contain;
+  background-position: center;
 }
