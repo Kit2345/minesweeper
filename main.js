@@ -1,3 +1,11 @@
+// Planning
+// Generate Bomb locations
+// Generate grid
+//   Empty or bomb
+// Click
+//  Bomb = Game over
+//  Empty = square change colour
+
 // Query selectors
 const grid = document.querySelector(".grid");
 const endGameScreen = document.querySelector(".end-game-screen");
@@ -24,14 +32,21 @@ console.log("Hello");
 console.log(grid);
 console.log(endGameScreen);
 
-function cellClicked() {
-  this.classList.add("cell-clicked");
+function gameOver() {
+  endGameScreen.classList.remove("hidden");
 }
 
 for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
-  cell.addEventListener("click", cellClicked);
+  cell.addEventListener("click", function () {
+    if (bombsArray.includes(i)) {
+      cell.classList.add("cell-bomb");
+      cell.classList.add("cell-clicked-bomb");
+      gameOver();
+    }
+    cell.classList.add("cell-clicked");
+  });
 
   grid.appendChild(cell);
 }
