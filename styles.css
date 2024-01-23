@@ -8,27 +8,9 @@ body {
   background-color: rgb(210, 245, 240);
 }
 
-.cell {
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-  outline: 1px solid black;
-  z-index: 2;
-}
-
-.end-game-screen {
-  background-color: rgba(241, 117, 78, 0.7);
-  height: 484px;
-  width: 481px;
-  grid-column: 1;
-  grid-row: 1;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  gap: 16px;
+.bomb-nearby {
+  color: white;
+  font-weight: bold;
 }
 
 .btn {
@@ -37,6 +19,14 @@ body {
   border-radius: 12px;
   border: 1px solid black;
   background-color: lightblue;
+}
+
+.cell {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  outline: 1px solid black;
+  z-index: 2;
 }
 
 .cell-bomb {
@@ -53,6 +43,21 @@ body {
 .cell-clicked-bomb {
   background-color: red;
   cursor: not-allowed;
+}
+
+.end-game-screen {
+  background-color: rgba(241, 117, 78, 0.7);
+  height: 484px;
+  width: 481px;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 16px;
 }
 
 .end-game-text {

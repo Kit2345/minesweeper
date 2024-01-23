@@ -56,14 +56,19 @@ function updateScore() {
   }
 }
 
-// function emptyCellClicked(event) {
-//   cell.classList.add("cell-clicked");
-// }
+function emptyCellClicked(event) {
+  const id = Number(event.target.id.slice(4));
+  console.log(id);
+  cell = document.querySelector(`#num-${id}`);
+  console.log(cell);
+
+  cell.classList.add("cell-clicked");
+}
 
 for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
-  cell.classList.add(`num-${i}`);
+  // cell.classList.add(`num-${i}`);
   cell.id = `num-${i}`;
 
   // Add bombs to bombsobj.
@@ -81,8 +86,7 @@ for (let i = 0; i < 100; i++) {
     }
     // Cell clicked doesnt have bomb
     else {
-      // emptyCellClicked(event);
-      cell.classList.add("cell-clicked");
+      emptyCellClicked(event);
       updateScore();
     }
   });
