@@ -61,7 +61,7 @@ for (let i = 0; i < 100; i++) {
   cell.classList.add("cell");
   cell.classList.add(`num-${i}`);
 
-  // Add bombs to bombsobj
+  // Add bombs to bombsobj.
   if (bombsArray.includes(i)) {
     bombsObj.i = "bomb";
     console.log(i, bombsObj.i);
