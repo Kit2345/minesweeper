@@ -6,12 +6,13 @@ const scoreDisplay = document.querySelector(".score");
 const endGameText = document.querySelector(".end-game-text");
 
 // Game variables
+const totalNumberOfCells = 100;
 let currentNumbOfBombs = 0;
-const totalNumbOfBombs = 10;
-const bombsArray = [];
+const totalNumbOfBombs = 0;
+const bombsArray = [7, 9, 17, 18, 19];
 const bombsObj = {};
 let currentScore = 0;
-const winningScore = 40;
+const winningScore = totalNumberOfCells - totalNumbOfBombs;
 
 // Random generator of bomb locations
 while (currentNumbOfBombs < totalNumbOfBombs) {
@@ -73,6 +74,7 @@ function checkBombsNearBy(clicked_id, position) {
         clicked_id + 10,
         clicked_id + 11,
       ];
+      break;
     case "edge-left":
       cellsToCheck = [
         clicked_id - 10,
@@ -113,71 +115,6 @@ function checkBombsNearBy(clicked_id, position) {
       ];
   }
 
-  // if (position === "corner-top-left") {
-  //   cellsToCheck = [clicked_id + 1, clicked_id + 10, clicked_id + 11];
-  // } else if (position === "corner-top-right") {
-  //   cellsToCheck = [clicked_id - 1, clicked_id + 9, clicked_id + 10];
-  // } else if (position === "corner-bottom-left") {
-  //   cellsToCheck = [clicked_id - 10, clicked_id - 9, clicked_id + 1];
-  // } else if (position === "corner-bottom-right") {
-  //   cellsToCheck = [clicked_id - 11, clicked_id - 10, clicked_id - 1];
-  // } else if (position === "edge-top") {
-  //   cellsToCheck = [
-  //     clicked_id - 1,
-  //     clicked_id + 1,
-  //     clicked_id + 9,
-  //     clicked_id + 10,
-  //     clicked_id + 11,
-  //   ];
-  // } else if (position === "edge-left") {
-  //   cellsToCheck = [
-  //     clicked_id - 10,
-  //     clicked_id - 9,
-  //     clicked_id + 1,
-  //     clicked_id + 10,
-  //     clicked_id + 11,
-  //   ];
-  // } else if (position === "edge-right") {
-  //   cellsToCheck = [
-  //     clicked_id - 11,
-  //     clicked_id - 10,
-  //     clicked_id - 1,
-  //     clicked_id + 9,
-  //     clicked_id + 10,
-  //   ];
-  // } else if (position === "edge-right") {
-  //   cellsToCheck = [
-  //     clicked_id - 11,
-  //     clicked_id - 10,
-  //     clicked_id - 1,
-  //     clicked_id + 9,
-  //     clicked_id + 10,
-  //   ];
-  // } else if (position === "edge-bottom") {
-  //   cellsToCheck = [
-  //     clicked_id - 11,
-  //     clicked_id - 10,
-  //     clicked_id - 9,
-  //     clicked_id - 1,
-  //     clicked_id + 1,
-  //   ];
-  // } else {
-  //   cellsToCheck = [
-  //     clicked_id - 11,
-  //     clicked_id - 10,
-  //     clicked_id - 9,
-  //     clicked_id - 1,
-  //     clicked_id + 1,
-  //     clicked_id + 9,
-  //     clicked_id + 10,
-  //     clicked_id + 11,
-  //   ];
-  // }
-
-  // if (position === ) {
-  //   cellsToCheck =
-  // }
-
   for (let i = 0; i < cellsToCheck.length; i++) {
     if (bombsObj[cellsToCheck[i]] === "bomb") {
       bombsNearBy++;
@@ -188,7 +125,7 @@ function checkBombsNearBy(clicked_id, position) {
 
 function emptyCellClicked(event) {
   const id = Number(event.target.id.slice(4));
-  console.log("id", id);
+  console.log("clicked_id", id);
   cell = document.querySelector(`#num-${id}`);
   // console.log(cell);
   // console.log(bombsObj.id);
@@ -216,6 +153,9 @@ function emptyCellClicked(event) {
     position = "middle";
   }
 
+  // check position is correct
+  console.log(position);
+
   bombsNearBy = checkBombsNearBy(id, position);
 
   cell.classList.add("cell-clicked");
@@ -235,7 +175,7 @@ for (let i = 0; i < 100; i++) {
   if (bombsArray.includes(i)) {
     let key = i;
     bombsObj[key] = "bomb";
-    console.log(i, bombsObj.i);
+    // console.log(i, bombsObj.i);
   }
 
   cell.addEventListener("click", function () {
