@@ -60,12 +60,18 @@ for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
   cell.classList.add(`num-${i}`);
+
+  // Add bombs to bombsobj
+  if (bombsArray.includes(i)) {
+    bombsObj.i = "bomb";
+    console.log(i, bombsObj.i);
+  }
+
   cell.addEventListener("click", function () {
     // cell clicked has bomb
     if (bombsArray.includes(i)) {
       cell.classList.add("cell-bomb");
       cell.classList.add("cell-clicked-bomb");
-      bombsObj.i = "bomb";
       gameOver(false);
     }
     // Cell clicked doesnt have bomb
