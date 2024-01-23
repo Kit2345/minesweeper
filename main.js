@@ -1,11 +1,3 @@
-// Planning
-// Generate Bomb locations
-// Generate grid
-//   Empty or bomb
-// Click
-//  Bomb = Game over
-//  Empty = square change colour
-
 // Query selectors
 const grid = document.querySelector(".grid");
 const endGameScreen = document.querySelector(".end-game-screen");
