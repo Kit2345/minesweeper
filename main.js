@@ -9,6 +9,7 @@ const endGameText = document.querySelector(".end-game-text");
 let currentNumbOfBombs = 0;
 const totalNumbOfBombs = 5;
 const bombsArray = [];
+const bombsObj = {};
 let currentScore = 0;
 const winningScore = 5;
 
@@ -59,6 +60,13 @@ for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
   cell.classList.add(`num-${i}`);
+
+  // Add bombs to bombsobj
+  if (bombsArray.includes(i)) {
+    bombsObj.i = "bomb";
+    console.log(i, bombsObj.i);
+  }
+
   cell.addEventListener("click", function () {
     // cell clicked has bomb
     if (bombsArray.includes(i)) {
@@ -79,3 +87,6 @@ for (let i = 0; i < 100; i++) {
 playAgainBtn.addEventListener("click", function () {
   location.reload();
 });
+
+// Showing where the bombs are to make testing easier
+console.log(bombsArray);
