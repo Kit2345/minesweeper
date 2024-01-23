@@ -8,8 +8,8 @@ const endGameText = document.querySelector(".end-game-text");
 // Game variables
 const totalNumberOfCells = 100;
 let currentNumbOfBombs = 0;
-const totalNumbOfBombs = 0;
-const bombsArray = [7, 9, 17, 18, 19];
+const totalNumbOfBombs = 10;
+const bombsArray = [];
 const bombsObj = {};
 let currentScore = 0;
 const winningScore = totalNumberOfCells - totalNumbOfBombs;
@@ -165,6 +165,25 @@ function emptyCellClicked(event) {
   }
 }
 
+function handleClick(event) {
+  const id = Number(event.target.id.slice(4));
+  console.log("clicked_id", id);
+  cell = document.querySelector(`#num-${id}`);
+
+  // cell clicked has bomb
+  if (bombsArray.includes(id)) {
+    cell.classList.add("cell-bomb");
+    cell.classList.add("cell-clicked-bomb");
+    gameOver(false);
+  }
+  // Cell clicked doesnt have bomb
+  else {
+    emptyCellClicked(event);
+    updateScore();
+    cell.removeEventListener("click", handleClick);
+  }
+}
+
 for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
@@ -178,19 +197,7 @@ for (let i = 0; i < 100; i++) {
     // console.log(i, bombsObj.i);
   }
 
-  cell.addEventListener("click", function () {
-    // cell clicked has bomb
-    if (bombsArray.includes(i)) {
-      cell.classList.add("cell-bomb");
-      cell.classList.add("cell-clicked-bomb");
-      gameOver(false);
-    }
-    // Cell clicked doesnt have bomb
-    else {
-      emptyCellClicked(event);
-      updateScore();
-    }
-  });
+  cell.addEventListener("click", handleClick);
 
   grid.appendChild(cell);
 }
