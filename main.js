@@ -9,6 +9,7 @@ const endGameText = document.querySelector(".end-game-text");
 let currentNumbOfBombs = 0;
 const totalNumbOfBombs = 5;
 const bombsArray = [];
+const bombsObj = {};
 let currentScore = 0;
 const winningScore = 5;
 
@@ -64,6 +65,7 @@ for (let i = 0; i < 100; i++) {
     if (bombsArray.includes(i)) {
       cell.classList.add("cell-bomb");
       cell.classList.add("cell-clicked-bomb");
+      bombsObj.i = "bomb";
       gameOver(false);
     }
     // Cell clicked doesnt have bomb
@@ -79,3 +81,6 @@ for (let i = 0; i < 100; i++) {
 playAgainBtn.addEventListener("click", function () {
   location.reload();
 });
+
+// Showing where the bombs are to make testing easier
+console.log(bombsArray);
