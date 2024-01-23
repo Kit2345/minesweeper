@@ -52,66 +52,127 @@ function checkBombsNearBy(clicked_id, position) {
   let bombsNearBy = 0;
   let cellsToCheck = [];
 
-  if (position === "corner-top-left") {
-    cellsToCheck = [clicked_id + 1, clicked_id + 10, clicked_id + 11];
-  } else if (position === "corner-top-right") {
-    cellsToCheck = [clicked_id - 1, clicked_id + 9, clicked_id + 10];
-  } else if (position === "corner-bottom-left") {
-    cellsToCheck = [clicked_id - 10, clicked_id - 9, clicked_id + 1];
-  } else if (position === "corner-bottom-right") {
-    cellsToCheck = [clicked_id - 11, clicked_id - 10, clicked_id - 1];
-  } else if (position === "edge-top") {
-    cellsToCheck = [
-      clicked_id - 1,
-      clicked_id + 1,
-      clicked_id + 9,
-      clicked_id + 10,
-      clicked_id + 11,
-    ];
-  } else if (position === "edge-left") {
-    cellsToCheck = [
-      clicked_id - 10,
-      clicked_id - 9,
-      clicked_id + 1,
-      clicked_id + 10,
-      clicked_id + 11,
-    ];
-  } else if (position === "edge-right") {
-    cellsToCheck = [
-      clicked_id - 11,
-      clicked_id - 10,
-      clicked_id - 1,
-      clicked_id + 9,
-      clicked_id + 10,
-    ];
-  } else if (position === "edge-right") {
-    cellsToCheck = [
-      clicked_id - 11,
-      clicked_id - 10,
-      clicked_id - 1,
-      clicked_id + 9,
-      clicked_id + 10,
-    ];
-  } else if (position === "edge-bottom") {
-    cellsToCheck = [
-      clicked_id - 11,
-      clicked_id - 10,
-      clicked_id - 9,
-      clicked_id - 1,
-      clicked_id + 1,
-    ];
-  } else {
-    cellsToCheck = [
-      clicked_id - 11,
-      clicked_id - 10,
-      clicked_id - 9,
-      clicked_id - 1,
-      clicked_id + 1,
-      clicked_id + 9,
-      clicked_id + 10,
-      clicked_id + 11,
-    ];
+  switch (position) {
+    case "corner-top-left":
+      cellsToCheck = [clicked_id + 1, clicked_id + 10, clicked_id + 11];
+      break;
+    case "corner-top-right":
+      cellsToCheck = [clicked_id - 1, clicked_id + 9, clicked_id + 10];
+      break;
+    case "corner-bottom-left":
+      cellsToCheck = [clicked_id - 10, clicked_id - 9, clicked_id + 1];
+      break;
+    case "corner-bottom-right":
+      cellsToCheck = [clicked_id - 11, clicked_id - 10, clicked_id - 1];
+      break;
+    case "edge-top":
+      cellsToCheck = [
+        clicked_id - 1,
+        clicked_id + 1,
+        clicked_id + 9,
+        clicked_id + 10,
+        clicked_id + 11,
+      ];
+    case "edge-left":
+      cellsToCheck = [
+        clicked_id - 10,
+        clicked_id - 9,
+        clicked_id + 1,
+        clicked_id + 10,
+        clicked_id + 11,
+      ];
+      break;
+    case "edge-right":
+      cellsToCheck = [
+        clicked_id - 11,
+        clicked_id - 10,
+        clicked_id - 1,
+        clicked_id + 9,
+        clicked_id + 10,
+      ];
+      break;
+    case "edge-bottom":
+      cellsToCheck = [
+        clicked_id - 11,
+        clicked_id - 10,
+        clicked_id - 9,
+        clicked_id - 1,
+        clicked_id + 1,
+      ];
+      break;
+    default:
+      cellsToCheck = [
+        clicked_id - 11,
+        clicked_id - 10,
+        clicked_id - 9,
+        clicked_id - 1,
+        clicked_id + 1,
+        clicked_id + 9,
+        clicked_id + 10,
+        clicked_id + 11,
+      ];
   }
+
+  // if (position === "corner-top-left") {
+  //   cellsToCheck = [clicked_id + 1, clicked_id + 10, clicked_id + 11];
+  // } else if (position === "corner-top-right") {
+  //   cellsToCheck = [clicked_id - 1, clicked_id + 9, clicked_id + 10];
+  // } else if (position === "corner-bottom-left") {
+  //   cellsToCheck = [clicked_id - 10, clicked_id - 9, clicked_id + 1];
+  // } else if (position === "corner-bottom-right") {
+  //   cellsToCheck = [clicked_id - 11, clicked_id - 10, clicked_id - 1];
+  // } else if (position === "edge-top") {
+  //   cellsToCheck = [
+  //     clicked_id - 1,
+  //     clicked_id + 1,
+  //     clicked_id + 9,
+  //     clicked_id + 10,
+  //     clicked_id + 11,
+  //   ];
+  // } else if (position === "edge-left") {
+  //   cellsToCheck = [
+  //     clicked_id - 10,
+  //     clicked_id - 9,
+  //     clicked_id + 1,
+  //     clicked_id + 10,
+  //     clicked_id + 11,
+  //   ];
+  // } else if (position === "edge-right") {
+  //   cellsToCheck = [
+  //     clicked_id - 11,
+  //     clicked_id - 10,
+  //     clicked_id - 1,
+  //     clicked_id + 9,
+  //     clicked_id + 10,
+  //   ];
+  // } else if (position === "edge-right") {
+  //   cellsToCheck = [
+  //     clicked_id - 11,
+  //     clicked_id - 10,
+  //     clicked_id - 1,
+  //     clicked_id + 9,
+  //     clicked_id + 10,
+  //   ];
+  // } else if (position === "edge-bottom") {
+  //   cellsToCheck = [
+  //     clicked_id - 11,
+  //     clicked_id - 10,
+  //     clicked_id - 9,
+  //     clicked_id - 1,
+  //     clicked_id + 1,
+  //   ];
+  // } else {
+  //   cellsToCheck = [
+  //     clicked_id - 11,
+  //     clicked_id - 10,
+  //     clicked_id - 9,
+  //     clicked_id - 1,
+  //     clicked_id + 1,
+  //     clicked_id + 9,
+  //     clicked_id + 10,
+  //     clicked_id + 11,
+  //   ];
+  // }
 
   // if (position === ) {
   //   cellsToCheck =
