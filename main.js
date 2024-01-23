@@ -42,7 +42,7 @@ function gameOver(isVictory) {
 function showAllBombs() {
   for (let i = 0; i < 100; i++)
     if (bombsArray.includes(i)) {
-      let cell = document.querySelector(`.num-${i}`);
+      let cell = document.querySelector(`#num-${i}`);
       cell.classList.add("cell-bomb");
       cell.classList.add("cell-clicked-bomb");
     }
@@ -56,10 +56,15 @@ function updateScore() {
   }
 }
 
+// function emptyCellClicked(event) {
+//   cell.classList.add("cell-clicked");
+// }
+
 for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
   cell.classList.add(`num-${i}`);
+  cell.id = `num-${i}`;
 
   // Add bombs to bombsobj.
   if (bombsArray.includes(i)) {
@@ -76,6 +81,7 @@ for (let i = 0; i < 100; i++) {
     }
     // Cell clicked doesnt have bomb
     else {
+      // emptyCellClicked(event);
       cell.classList.add("cell-clicked");
       updateScore();
     }
