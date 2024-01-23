@@ -7,11 +7,11 @@ const endGameText = document.querySelector(".end-game-text");
 
 // Game variables
 let currentNumbOfBombs = 0;
-const totalNumbOfBombs = 5;
-const bombsArray = [1, 10];
+const totalNumbOfBombs = 10;
+const bombsArray = [];
 const bombsObj = {};
 let currentScore = 0;
-const winningScore = 5;
+const winningScore = 40;
 
 // Random generator of bomb locations
 while (currentNumbOfBombs < totalNumbOfBombs) {
@@ -21,14 +21,6 @@ while (currentNumbOfBombs < totalNumbOfBombs) {
     currentNumbOfBombs++;
   }
 }
-
-// console.log(bombsArray);
-// console.log(bombsArray.length);
-
-// Making game board
-// console.log("Hello");
-// console.log(grid);
-// console.log(endGameScreen);
 
 function gameOver(isVictory) {
   if (isVictory) {
@@ -56,6 +48,83 @@ function updateScore() {
   }
 }
 
+function checkBombsNearBy(clicked_id, position) {
+  let bombsNearBy = 0;
+  let cellsToCheck = [];
+
+  if (position === "corner-top-left") {
+    cellsToCheck = [clicked_id + 1, clicked_id + 10, clicked_id + 11];
+  } else if (position === "corner-top-right") {
+    cellsToCheck = [clicked_id - 1, clicked_id + 9, clicked_id + 10];
+  } else if (position === "corner-bottom-left") {
+    cellsToCheck = [clicked_id - 10, clicked_id - 9, clicked_id + 1];
+  } else if (position === "corner-bottom-right") {
+    cellsToCheck = [clicked_id - 11, clicked_id - 10, clicked_id - 1];
+  } else if (position === "edge-top") {
+    cellsToCheck = [
+      clicked_id - 1,
+      clicked_id + 1,
+      clicked_id + 9,
+      clicked_id + 10,
+      clicked_id + 11,
+    ];
+  } else if (position === "edge-left") {
+    cellsToCheck = [
+      clicked_id - 10,
+      clicked_id - 9,
+      clicked_id + 1,
+      clicked_id + 10,
+      clicked_id + 11,
+    ];
+  } else if (position === "edge-right") {
+    cellsToCheck = [
+      clicked_id - 11,
+      clicked_id - 10,
+      clicked_id - 1,
+      clicked_id + 9,
+      clicked_id + 10,
+    ];
+  } else if (position === "edge-right") {
+    cellsToCheck = [
+      clicked_id - 11,
+      clicked_id - 10,
+      clicked_id - 1,
+      clicked_id + 9,
+      clicked_id + 10,
+    ];
+  } else if (position === "edge-bottom") {
+    cellsToCheck = [
+      clicked_id - 11,
+      clicked_id - 10,
+      clicked_id - 9,
+      clicked_id - 1,
+      clicked_id + 1,
+    ];
+  } else {
+    cellsToCheck = [
+      clicked_id - 11,
+      clicked_id - 10,
+      clicked_id - 9,
+      clicked_id - 1,
+      clicked_id + 1,
+      clicked_id + 9,
+      clicked_id + 10,
+      clicked_id + 11,
+    ];
+  }
+
+  // if (position === ) {
+  //   cellsToCheck =
+  // }
+
+  for (let i = 0; i < cellsToCheck.length; i++) {
+    if (bombsObj[cellsToCheck[i]] === "bomb") {
+      bombsNearBy++;
+    }
+  }
+  return bombsNearBy;
+}
+
 function emptyCellClicked(event) {
   const id = Number(event.target.id.slice(4));
   console.log("id", id);
@@ -64,20 +133,30 @@ function emptyCellClicked(event) {
   // console.log(bombsObj.id);
   let bombsNearBy = 0;
   // console.log(bombsObj);
+  let position = "";
 
-  // Switch for where on grid
-  switch (id) {
-    case 0:
-      console.log("switch works: corner clicked");
-      if (bombsObj[id + 1] === "bomb") {
-        bombsNearBy++;
-      }
-      if (bombsObj[id + 10] === "bomb") {
-        bombsNearBy++;
-      }
-      console.log("bombsNearBy", bombsNearBy);
-      break;
+  if (id === 0) {
+    position = "corner-top-left";
+  } else if (id === 9) {
+    position = "corner-top-right";
+  } else if (id === 90) {
+    position = "corner-bottom-left";
+  } else if (id === 99) {
+    position = "corner-bottom-right";
+  } else if (id >= 1 && id <= 8) {
+    position = "edge-top";
+  } else if (id % 10 === 0) {
+    position = "edge-left";
+  } else if ((id + 1) % 10 === 0) {
+    position = "edge-right";
+  } else if (id >= 91 && id <= 98) {
+    position = "edge-bottom";
+  } else {
+    position = "middle";
   }
+
+  bombsNearBy = checkBombsNearBy(id, position);
+
   cell.classList.add("cell-clicked");
   if (bombsNearBy > 0) {
     cell.innerText = bombsNearBy;
