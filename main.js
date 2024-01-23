@@ -8,7 +8,7 @@ const endGameText = document.querySelector(".end-game-text");
 // Game variables
 let currentNumbOfBombs = 0;
 const totalNumbOfBombs = 5;
-const bombsArray = [1];
+const bombsArray = [1, 10];
 const bombsObj = {};
 let currentScore = 0;
 const winningScore = 5;
@@ -63,27 +63,26 @@ function emptyCellClicked(event) {
   // console.log(cell);
   // console.log(bombsObj.id);
   let bombsNearBy = 0;
-  console.log(bombsObj);
+  // console.log(bombsObj);
 
   // Switch for where on grid
-  // switch (id) {
-  //   case 0:
-  //     console.log("switch works: corner clicked");
-  //     if (bombsObj[id + 1] === "bomb") {
-  //       bombsNearBy++;
-  //     }
-  //     if (bombsObj[id + 10] === "bomb") {
-  //       bombsNearBy++;
-  //     }
-  //     console.log("bombsNearBy", bombsNearBy);
-  //     console.log("id+1", id + 1);
-  //     console.log(bombsObj[id + 1]);
-  //     console.log(bombsObj["1"]);
-  //     console.log(bombsObj.id);
-  //     break;
-  // }
-
+  switch (id) {
+    case 0:
+      console.log("switch works: corner clicked");
+      if (bombsObj[id + 1] === "bomb") {
+        bombsNearBy++;
+      }
+      if (bombsObj[id + 10] === "bomb") {
+        bombsNearBy++;
+      }
+      console.log("bombsNearBy", bombsNearBy);
+      break;
+  }
   cell.classList.add("cell-clicked");
+  if (bombsNearBy > 0) {
+    cell.innerText = bombsNearBy;
+    cell.classList.add("bomb-nearby");
+  }
 }
 
 for (let i = 0; i < 100; i++) {
