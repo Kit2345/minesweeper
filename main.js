@@ -60,6 +60,8 @@ function handleClick(event) {
       cell.classList.add("bomb-suspect");
       cell.innerText = "X";
     }
+  } else if (cell.innerText === "X") {
+    console.log("Protected cell");
   } else {
     // cell clicked has bomb
     if (bombsArray.includes(id)) {
