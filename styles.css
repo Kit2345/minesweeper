@@ -46,6 +46,11 @@ body {
   cursor: not-allowed;
 }
 
+.cell-auto-clicked {
+  /* background-color: rgb(46, 134, 223); */
+  background-color: green;
+}
+
 .cell-clicked-bomb {
   background-color: red;
   cursor: not-allowed;

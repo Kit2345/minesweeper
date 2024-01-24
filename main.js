@@ -13,6 +13,7 @@ const bombsArray = [];
 const bombsObj = {};
 let currentScore = 0;
 const winningScore = totalNumberOfCells - totalNumbOfBombs;
+let cellsClicked = [];
 
 // Random generator of bomb locations
 while (currentNumbOfBombs < totalNumbOfBombs) {
@@ -20,6 +21,44 @@ while (currentNumbOfBombs < totalNumbOfBombs) {
   if (!bombsArray.includes(randomNumber)) {
     bombsArray.push(randomNumber);
     currentNumbOfBombs++;
+  }
+}
+
+// Generates Grid and adds event listener to each cell
+for (let i = 0; i < 100; i++) {
+  const cell = document.createElement("div");
+  cell.classList.add("cell");
+  // add id to each cell
+  cell.id = `num-${i}`;
+
+  // Add bombs to bombsobj.
+  if (bombsArray.includes(i)) {
+    let key = i;
+    bombsObj[key] = "bomb";
+    // console.log(i, bombsObj.i);
+  }
+
+  cell.addEventListener("click", handleClick);
+
+  grid.appendChild(cell);
+}
+
+// Function to handle cell clicked
+function handleClick(event) {
+  // Extracts just number from id of div
+  const id = Number(event.target.id.slice(4));
+  console.log("id", id);
+  cell = document.querySelector(`#num-${id}`);
+
+  // cell clicked has bomb
+  if (bombsArray.includes(id)) {
+    cell.classList.add("cell-bomb");
+    cell.classList.add("cell-clicked-bomb");
+    gameOver(false);
+  }
+  // Cell clicked doesnt have bomb
+  else {
+    handleEmptyCellClicked(id);
   }
 }
 
@@ -41,95 +80,24 @@ function showAllBombs() {
     }
 }
 
-function updateScore() {
-  currentScore++;
-  scoreDisplay.innerText = currentScore.toString().padStart(5, "0");
-  if (currentScore === winningScore) {
-    gameOver(true);
-  }
-}
-
-function checkBombsNearBy(clicked_id, position) {
-  let bombsNearBy = 0;
-  let cellsToCheck = [];
-
-  switch (position) {
-    case "corner-top-left":
-      cellsToCheck = [clicked_id + 1, clicked_id + 10, clicked_id + 11];
-      break;
-    case "corner-top-right":
-      cellsToCheck = [clicked_id - 1, clicked_id + 9, clicked_id + 10];
-      break;
-    case "corner-bottom-left":
-      cellsToCheck = [clicked_id - 10, clicked_id - 9, clicked_id + 1];
-      break;
-    case "corner-bottom-right":
-      cellsToCheck = [clicked_id - 11, clicked_id - 10, clicked_id - 1];
-      break;
-    case "edge-top":
-      cellsToCheck = [
-        clicked_id - 1,
-        clicked_id + 1,
-        clicked_id + 9,
-        clicked_id + 10,
-        clicked_id + 11,
-      ];
-      break;
-    case "edge-left":
-      cellsToCheck = [
-        clicked_id - 10,
-        clicked_id - 9,
-        clicked_id + 1,
-        clicked_id + 10,
-        clicked_id + 11,
-      ];
-      break;
-    case "edge-right":
-      cellsToCheck = [
-        clicked_id - 11,
-        clicked_id - 10,
-        clicked_id - 1,
-        clicked_id + 9,
-        clicked_id + 10,
-      ];
-      break;
-    case "edge-bottom":
-      cellsToCheck = [
-        clicked_id - 11,
-        clicked_id - 10,
-        clicked_id - 9,
-        clicked_id - 1,
-        clicked_id + 1,
-      ];
-      break;
-    default:
-      cellsToCheck = [
-        clicked_id - 11,
-        clicked_id - 10,
-        clicked_id - 9,
-        clicked_id - 1,
-        clicked_id + 1,
-        clicked_id + 9,
-        clicked_id + 10,
-        clicked_id + 11,
-      ];
-  }
-
-  for (let i = 0; i < cellsToCheck.length; i++) {
-    if (bombsObj[cellsToCheck[i]] === "bomb") {
-      bombsNearBy++;
-    }
-  }
-  return bombsNearBy;
-}
-
-function emptyCellClicked(event) {
-  const id = Number(event.target.id.slice(4));
-  console.log("clicked_id", id);
+function handleEmptyCellClicked(id) {
+  cell.removeEventListener("click", handleClick);
+  //   console.log("cell", cell);
+  //   console.log("id", id);
   cell = document.querySelector(`#num-${id}`);
-  // console.log(cell);
-  // console.log(bombsObj.id);
-  let bombsNearBy = 0;
+  const position = cellPosition(id);
+  const cellsToCheck = calculateCellsToCheck(id, position);
+  //   console.log("isManual", isManual);
+  //   console.log("position", position);
+  calculateBombsNearBy(id, cell, cellsToCheck);
+  //   console.log("bombsNearBy", bombsNearBy);
+
+  //   displayClickedCell(id, cell, bombsNearBy);
+  //   console.log(cellsClicked);
+}
+
+function cellPosition(id) {
+  //   let bombsNearBy = 0;
   // console.log(bombsObj);
   let position = "";
 
@@ -154,52 +122,95 @@ function emptyCellClicked(event) {
   }
 
   // check position is correct
-  console.log(position);
+  //   console.log(position);
+  return position;
+}
 
-  bombsNearBy = checkBombsNearBy(id, position);
+function calculateCellsToCheck(id, position) {
+  let cellsToCheck = [];
 
+  switch (position) {
+    case "corner-top-left":
+      cellsToCheck = [id + 1, id + 10, id + 11];
+      break;
+    case "corner-top-right":
+      cellsToCheck = [id - 1, id + 9, id + 10];
+      break;
+    case "corner-bottom-left":
+      cellsToCheck = [id - 10, id - 9, id + 1];
+      break;
+    case "corner-bottom-right":
+      cellsToCheck = [id - 11, id - 10, id - 1];
+      break;
+    case "edge-top":
+      cellsToCheck = [id - 1, id + 1, id + 9, id + 10, id + 11];
+      break;
+    case "edge-left":
+      cellsToCheck = [id - 10, id - 9, id + 1, id + 10, id + 11];
+      break;
+    case "edge-right":
+      cellsToCheck = [id - 11, id - 10, id - 1, id + 9, id + 10];
+      break;
+    case "edge-bottom":
+      cellsToCheck = [id - 11, id - 10, id - 9, id - 1, id + 1];
+      break;
+    default:
+      cellsToCheck = [
+        id - 11,
+        id - 10,
+        id - 9,
+        id - 1,
+        id + 1,
+        id + 9,
+        id + 10,
+        id + 11,
+      ];
+  }
+  return cellsToCheck;
+}
+
+function calculateBombsNearBy(id, cell, cellsToCheck) {
+  let bombsNearBy = 0;
+  for (let i = 0; i < cellsToCheck.length; i++) {
+    if (bombsObj[cellsToCheck[i]] === "bomb") {
+      bombsNearBy++;
+    }
+  }
+
+  displayClickedCell(id, cell, bombsNearBy);
+}
+
+function displayClickedCell(id, cell, bombsNearBy) {
   cell.classList.add("cell-clicked");
+  cellsClicked.push(id);
+
   if (bombsNearBy > 0) {
     cell.innerText = bombsNearBy;
     cell.classList.add("bomb-nearby");
   }
-}
 
-function handleClick(event) {
-  const id = Number(event.target.id.slice(4));
-  console.log("clicked_id", id);
-  cell = document.querySelector(`#num-${id}`);
+  updateScore();
 
-  // cell clicked has bomb
-  if (bombsArray.includes(id)) {
-    cell.classList.add("cell-bomb");
-    cell.classList.add("cell-clicked-bomb");
-    gameOver(false);
-  }
-  // Cell clicked doesnt have bomb
-  else {
-    emptyCellClicked(event);
-    updateScore();
-    cell.removeEventListener("click", handleClick);
+  if (bombsNearBy === 0) {
+    const position = cellPosition(id);
+    const cellsToCheck = calculateCellsToCheck(id, position);
+
+    for (let i = 0; i < cellsToCheck.length; i++) {
+      if (!cellsClicked.includes(cellsToCheck[i])) {
+        cellsClicked.push(cellsToCheck[i]);
+        // console.log(`cellsClicked Doesnt include ${cellsToCheck[i]}`);
+        handleEmptyCellClicked(cellsToCheck[i]);
+      }
+    }
   }
 }
 
-for (let i = 0; i < 100; i++) {
-  const cell = document.createElement("div");
-  cell.classList.add("cell");
-  // cell.classList.add(`num-${i}`);
-  cell.id = `num-${i}`;
-
-  // Add bombs to bombsobj.
-  if (bombsArray.includes(i)) {
-    let key = i;
-    bombsObj[key] = "bomb";
-    // console.log(i, bombsObj.i);
+function updateScore() {
+  currentScore++;
+  scoreDisplay.innerText = currentScore.toString().padStart(5, "0");
+  if (currentScore === winningScore) {
+    gameOver(true);
   }
-
-  cell.addEventListener("click", handleClick);
-
-  grid.appendChild(cell);
 }
 
 playAgainBtn.addEventListener("click", function () {
@@ -207,4 +218,4 @@ playAgainBtn.addEventListener("click", function () {
 });
 
 // Showing where the bombs are to make testing easier
-console.log(bombsArray);
+// console.log(bombsArray);
