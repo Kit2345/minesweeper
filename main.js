@@ -13,6 +13,7 @@ const bombsArray = [];
 const bombsObj = {};
 let currentScore = 0;
 const winningScore = totalNumberOfCells - totalNumbOfBombs;
+let cellsClicked = [];
 
 // Random generator of bomb locations
 while (currentNumbOfBombs < totalNumbOfBombs) {
@@ -123,9 +124,7 @@ function checkBombsNearBy(clicked_id, position) {
   return bombsNearBy;
 }
 
-function emptyCellClicked(event) {
-  const id = Number(event.target.id.slice(4));
-  console.log("clicked_id", id);
+function emptyCellClicked(id) {
   cell = document.querySelector(`#num-${id}`);
   // console.log(cell);
   // console.log(bombsObj.id);
@@ -178,12 +177,13 @@ function handleClick(event) {
   }
   // Cell clicked doesnt have bomb
   else {
-    emptyCellClicked(event);
+    emptyCellClicked(id);
     updateScore();
     cell.removeEventListener("click", handleClick);
   }
 }
 
+// Generates Grid and adds event listener to each cell
 for (let i = 0; i < 100; i++) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
@@ -207,4 +207,4 @@ playAgainBtn.addEventListener("click", function () {
 });
 
 // Showing where the bombs are to make testing easier
-console.log(bombsArray);
+// console.log(bombsArray);
