@@ -198,7 +198,6 @@ function displayClickedCell(id, cell, bombsNearBy) {
     for (let i = 0; i < cellsToCheck.length; i++) {
       if (!cellsClicked.includes(cellsToCheck[i])) {
         cellsClicked.push(cellsToCheck[i]);
-        // console.log(`cellsClicked Doesnt include ${cellsToCheck[i]}`);
         handleEmptyCellClicked(cellsToCheck[i]);
       }
     }
