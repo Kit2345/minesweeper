@@ -2,6 +2,8 @@
 
 [Click to play game](https://minesweeper-ow6iymelo-kits-projects-1b870b35.vercel.app)
 
+## How to play the game
+
 This game currently only works with mouseclicks.
 
 Aim of the game:
