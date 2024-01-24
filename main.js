@@ -50,15 +50,27 @@ function handleClick(event) {
   console.log("id", id);
   cell = document.querySelector(`#num-${id}`);
 
-  // cell clicked has bomb
-  if (bombsArray.includes(id)) {
-    cell.classList.add("cell-bomb");
-    cell.classList.add("cell-clicked-bomb");
-    gameOver(false);
-  }
-  // Cell clicked doesnt have bomb
-  else {
-    handleEmptyCellClicked(id);
+  // if shiftKey is pressed
+  if (event.shiftKey) {
+    // console.log("shift key pressed");
+    if (cell.innerText === "X") {
+      cell.classList.remove("bomb-suspect");
+      cell.innerText = "";
+    } else {
+      cell.classList.add("bomb-suspect");
+      cell.innerText = "X";
+    }
+  } else {
+    // cell clicked has bomb
+    if (bombsArray.includes(id)) {
+      cell.classList.add("cell-bomb");
+      cell.classList.add("cell-clicked-bomb");
+      gameOver(false);
+    }
+    // Cell clicked doesnt have bomb
+    else {
+      handleEmptyCellClicked(id);
+    }
   }
 }
 
@@ -82,23 +94,15 @@ function showAllBombs() {
 
 function handleEmptyCellClicked(id) {
   cell.removeEventListener("click", handleClick);
-  //   console.log("cell", cell);
-  //   console.log("id", id);
+
   cell = document.querySelector(`#num-${id}`);
   const position = cellPosition(id);
   const cellsToCheck = calculateCellsToCheck(id, position);
-  //   console.log("isManual", isManual);
-  //   console.log("position", position);
-  calculateBombsNearBy(id, cell, cellsToCheck);
-  //   console.log("bombsNearBy", bombsNearBy);
 
-  //   displayClickedCell(id, cell, bombsNearBy);
-  //   console.log(cellsClicked);
+  calculateBombsNearBy(id, cell, cellsToCheck);
 }
 
 function cellPosition(id) {
-  //   let bombsNearBy = 0;
-  // console.log(bombsObj);
   let position = "";
 
   if (id === 0) {
@@ -122,7 +126,6 @@ function cellPosition(id) {
   }
 
   // check position is correct
-  //   console.log(position);
   return position;
 }
 
@@ -198,7 +201,6 @@ function displayClickedCell(id, cell, bombsNearBy) {
     for (let i = 0; i < cellsToCheck.length; i++) {
       if (!cellsClicked.includes(cellsToCheck[i])) {
         cellsClicked.push(cellsToCheck[i]);
-        // console.log(`cellsClicked Doesnt include ${cellsToCheck[i]}`);
         handleEmptyCellClicked(cellsToCheck[i]);
       }
     }
