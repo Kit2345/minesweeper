@@ -82,23 +82,15 @@ function showAllBombs() {
 
 function handleEmptyCellClicked(id) {
   cell.removeEventListener("click", handleClick);
-  //   console.log("cell", cell);
-  //   console.log("id", id);
+
   cell = document.querySelector(`#num-${id}`);
   const position = cellPosition(id);
   const cellsToCheck = calculateCellsToCheck(id, position);
-  //   console.log("isManual", isManual);
-  //   console.log("position", position);
-  calculateBombsNearBy(id, cell, cellsToCheck);
-  //   console.log("bombsNearBy", bombsNearBy);
 
-  //   displayClickedCell(id, cell, bombsNearBy);
-  //   console.log(cellsClicked);
+  calculateBombsNearBy(id, cell, cellsToCheck);
 }
 
 function cellPosition(id) {
-  //   let bombsNearBy = 0;
-  // console.log(bombsObj);
   let position = "";
 
   if (id === 0) {
@@ -122,7 +114,6 @@ function cellPosition(id) {
   }
 
   // check position is correct
-  //   console.log(position);
   return position;
 }
 
