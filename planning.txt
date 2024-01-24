@@ -43,3 +43,12 @@ Need:
                if yes -> nothing
                if no -> "click it" 
 
+
+Current functions: 
+- handleClick 
+     - this defines variables id and cell 
+     - checks if bomb space contains bomb
+          - if yes -> end game
+          - if no -> passes to EmptyCellClicked and updates Score, removes eventlistener
+- handleEmptyCellClicked
+     - 
