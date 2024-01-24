@@ -1,6 +1,6 @@
 # minesweeper
 
-[Click to play game](minesweeper-ow6iymelo-kits-projects-1b870b35.vercel.app)
+[Click to play game](https://minesweeper-ow6iymelo-kits-projects-1b870b35.vercel.app)
 
 This game currently only works with mouseclicks.
 
