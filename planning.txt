@@ -1,0 +1,45 @@
+Planning
+Generate Bomb locations
+Generate grid
+     Empty or bomb
+Click
+     Bomb = Game over
+     Empty = square change colour
+
+Planning extra feature - how many bombs nearby
+Need:
+     1) way to look up cell number and what's in the cell
+     2) count the number of bombs surrounding clicked cell
+     3) display the number on clicked cell
+
+1) way to look up cell number and what's in the cell
+Adding object of whats inside each cell
+
+2) count the number of bombs surrounding clicked cell
+When cell clicked, looks up bomb object to count number of bombs nearby.
+Scenarios - cell clicked is:
+     middle
+     edge
+     corner
+
+Current flow:
+     Start of game: 
+            game board made, 
+            each cell has event listener
+            each cell has unique ID (0-99)
+     click cell
+         checks whether cell contains bomb
+               - if yes -> game over: losing screen 
+               - if no 
+                    checks bombs in all nearby cells. 
+                    returns a number representing number of nearby bombs
+                    checks if current score = max score. If yes, game over: winning screen
+                    adds square to cells clicked array
+
+Want to add: feature/ if cell has no bombs nearby, all nearby cells are automatically clicked
+Need: 
+- separate CSS class to differentiate manually clicked and automatically clicked cell
+- function to check if nearby cells have been clicked already
+               if yes -> nothing
+               if no -> "click it" 
+

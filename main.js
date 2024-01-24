@@ -162,6 +162,10 @@ function emptyCellClicked(id) {
     cell.innerText = bombsNearBy;
     cell.classList.add("bomb-nearby");
   }
+  cellsClicked.push(id);
+
+  // Debug to check cells clicked added
+  console.log(cellsClicked);
 }
 
 function handleClick(event) {
