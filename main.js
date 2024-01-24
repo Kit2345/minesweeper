@@ -50,15 +50,27 @@ function handleClick(event) {
   console.log("id", id);
   cell = document.querySelector(`#num-${id}`);
 
-  // cell clicked has bomb
-  if (bombsArray.includes(id)) {
-    cell.classList.add("cell-bomb");
-    cell.classList.add("cell-clicked-bomb");
-    gameOver(false);
-  }
-  // Cell clicked doesnt have bomb
-  else {
-    handleEmptyCellClicked(id);
+  // if shiftKey is pressed
+  if (event.shiftKey) {
+    // console.log("shift key pressed");
+    if (cell.innerText === "X") {
+      cell.classList.remove("bomb-suspect");
+      cell.innerText = "";
+    } else {
+      cell.classList.add("bomb-suspect");
+      cell.innerText = "X";
+    }
+  } else {
+    // cell clicked has bomb
+    if (bombsArray.includes(id)) {
+      cell.classList.add("cell-bomb");
+      cell.classList.add("cell-clicked-bomb");
+      gameOver(false);
+    }
+    // Cell clicked doesnt have bomb
+    else {
+      handleEmptyCellClicked(id);
+    }
   }
 }
 
