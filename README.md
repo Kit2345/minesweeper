@@ -22,12 +22,6 @@ After finishing the School of Code I saw that Boolean UK was hosting a week of e
 
 During the bootcamp I found DOM manipulation using Javascript difficult, so decided to code it all from scratch as practice. It was thoroughly enjoyable and it's great seeing something come to life step by step.
 
-### What it does
-
-This is a minesweeper game - the objective is to clear the board by clicking all the safe cells without clicking on any of the bombs.
-
-It has the following features: - Clicking a cell will reveal how many bombs are present in the surrounding cells. - if you shift click to a cell you think contains a bomb, it marks it with a X, "protecting" the cell, making it unclickable. - Cells with no bombs nearby will automatically click on all nearby spaces.
-
 ### Challenges I ran into
 
 The biggest challenge I ran into was adding each additional feature. I planned out each feature and how to implement it, but didn’t really think about future features. So this meant I often had to refactor existing functions into smaller ones or re-write or add to existing code. I would inadvertently add bugs doing this, which meant I had to troubleshoot and work out where they were coming from. What I thought would be simple took a lot longer than expected. I still want to add difficulty settings - but that again needs another refactor/re-write!
