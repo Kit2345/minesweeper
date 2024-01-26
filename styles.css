@@ -40,8 +40,9 @@ body {
 }
 
 .cell {
-  width: 48px;
-  height: 48px;
+  width: 10%;
+  aspect-ratio: 1 / 1;
+
   cursor: pointer;
   outline: 1px solid black;
   z-index: 2;
@@ -70,8 +71,7 @@ body {
 
 .end-game-screen {
   background-color: rgba(241, 117, 78, 0.7);
-  height: 484px;
-  width: 481px;
+  width: 95%;
   grid-column: 1;
   grid-row: 1;
   z-index: 3;
@@ -94,8 +94,7 @@ body {
 }
 
 .grid {
-  height: 484px;
-  width: 484px;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
   grid-column: 1;
@@ -120,9 +119,31 @@ body {
 }
 
 .whole-game {
-  width: 500px;
+  width: 100%;
 }
 
 .win {
   background-color: rgba(78, 241, 187, 0.7);
+}
+
+@media only screen and (min-width: 500px) {
+  /* For desktops: */
+  .whole-game {
+    width: 500px;
+  }
+
+  .grid {
+    height: 484px;
+    width: 484px;
+  }
+
+  .end-game-screen {
+    height: 484px;
+    width: 481px;
+  }
+
+  .cell {
+    width: 48px;
+    height: 48px;
+  }
 }
