@@ -4,17 +4,15 @@
 
 ## How to play the game
 
-This game currently only works with mouseclicks.
-
 Aim of the game:
 Click all squares without finding a bomb. There are 10 in total.
 
 How to play:
-Mouse click any cell to reveal it's contents. Will it be a bomb?
+Click any cell to reveal it's contents. Will it be a bomb?
 
 If the cell is empty - the number displayed will tell you how many sqaures around it contain bombs.
 
-To mark a cell you think contains a bomb: hold down Shift key and mouseclick. Cell will be marked with an X, protecting the cell from being accidently mis-clicked. To remove the X/protection, hold down Shift Key and mouseclick cell again.
+To mark a cell you think contains a bomb: hold down Shift key and click. Cell will be marked with an X, protecting the cell from being accidently mis-clicked. To remove the X/protection, hold down Shift Key and click cell again.
 
 ### Inspiration
 
@@ -41,7 +39,7 @@ I am really proud that I managed to get a working Minesweeper game working. How 
 
 I want to add difficulty setting.
 Add tests to make sure each function does it's intended job.
-The game currently relies on mouse clicks, so doesn’t work on mobile. I would love to re-make this game in react (or perhaps take this opportunity to learn react native).
+Game was designed with desktop in mind, so shift key + click isn't easy/possible with mobile. Need to come up with a solution to this. Also media queries so it works better on mobile. 
 
 ### Built with
 
