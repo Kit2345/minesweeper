@@ -37,9 +37,9 @@ I am really proud that I managed to get a working Minesweeper game working. How 
 
 ### What's next?
 
-I want to add difficulty setting.
-Add tests to make sure each function does it's intended job.
-Game was designed with desktop in mind, so shift key + click isn't easy/possible with mobile. Need to come up with a solution to this. Also media queries so it works better on mobile. 
+I want to add difficulty setting. <br>
+Add tests to make sure each function does it's intended job.<br>
+Game was designed with desktop in mind, so shift key + click isn't easy/possible with mobile. Need to come up with a solution to this. Also media queries so it works better on mobile. <br>
 
 ### Built with
 
