@@ -16,7 +16,8 @@ If the cell is empty - the number displayed will tell you how many sqaures aroun
 
 To mark a cell you think contains a bomb: hold down Shift key and mouseclick. Cell will be marked with an X, protecting the cell from being accidently mis-clicked. To remove the X/protection, hold down Shift Key and mouseclick cell again.
 
-### Inspiration
+### Inspiration
+
 After finishing the School of Code I saw that Boolean UK was hosting a week of evening taster sessions to show absolute beginners how to code retro arcade games. This seemed like a fun idea, and would be great to go back to fundamentals for practice. It was one game per two hour session, so by the end of it, we had a MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
 
 During the bootcamp I found DOM manipulation using Javascript difficult, so decided to code it all from scratch as practice. It was thoroughly enjoyable and it's great seeing something come to life step by step.
@@ -47,5 +48,7 @@ I am really proud that I managed to get a working Minesweeper game working. How 
 I want to add difficulty setting.
 Add tests to make sure each function does it's intended job.
 The game currently relies on mouse clicks, so doesn’t work on mobile. I would love to re-make this game in react (or perhaps take this opportunity to learn react native).
-Built with
+
+### Built with
+
 Javascript, CSS, HTML
