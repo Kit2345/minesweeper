@@ -4,6 +4,9 @@ const endGameScreen = document.querySelector(".end-game-screen");
 const playAgainBtn = document.querySelector(".play-again");
 const scoreDisplay = document.querySelector(".score");
 const endGameText = document.querySelector(".end-game-text");
+const easyBtn = document.querySelector(".btn-easy");
+const mediumBtn = document.querySelector(".btn-medium");
+const hardBtn = document.querySelector(".btn-hard");
 
 // Game variables
 const totalNumberOfCells = 100;
@@ -254,6 +257,43 @@ function updateScore() {
 playAgainBtn.addEventListener("click", function () {
   restartGame(currentDifficulty);
 });
+
+easyBtn.addEventListener("click", function () {
+  changeDifficulty("easy");
+  restartGame(currentDifficulty);
+});
+
+mediumBtn.addEventListener("click", function () {
+  changeDifficulty("medium");
+  restartGame(currentDifficulty);
+});
+
+hardBtn.addEventListener("click", function () {
+  changeDifficulty("hard");
+  restartGame(currentDifficulty);
+});
+
+function changeDifficulty(difficulty) {
+  currentDifficulty = difficulty;
+
+  switch (difficulty) {
+    case "easy":
+      easyBtn.classList.add("btn-easy-selected");
+      mediumBtn.classList.remove("btn-medium-selected");
+      hardBtn.classList.remove("btn-hard-selected");
+      break;
+    case "medium":
+      easyBtn.classList.remove("btn-easy-selected");
+      mediumBtn.classList.add("btn-medium-selected");
+      hardBtn.classList.remove("btn-hard-selected");
+      break;
+    case "hard":
+      easyBtn.classList.remove("btn-easy-selected");
+      mediumBtn.classList.remove("btn-medium-selected");
+      hardBtn.classList.add("btn-hard-selected");
+      break;
+  }
+}
 
 // Showing where the bombs are to make testing easier
 // console.log(bombsArray);
