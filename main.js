@@ -8,39 +8,64 @@ const endGameText = document.querySelector(".end-game-text");
 // Game variables
 const totalNumberOfCells = 100;
 let currentNumbOfBombs = 0;
-const totalNumbOfBombs = 10;
-const bombsArray = [];
-const bombsObj = {};
+let totalNumbOfBombs = 0;
+let bombsArray = [];
+let bombsObj = {};
 let currentScore = 0;
-const winningScore = totalNumberOfCells - totalNumbOfBombs;
+let winningScore = 0;
 let cellsClicked = [];
 
-// Random generator of bomb locations
-while (currentNumbOfBombs < totalNumbOfBombs) {
-  const randomNumber = Math.floor(Math.random() * 100);
-  if (!bombsArray.includes(randomNumber)) {
-    bombsArray.push(randomNumber);
-    currentNumbOfBombs++;
+function resetInitialVariables(difficulty) {
+  currentNumbOfBombs = 0;
+  bombsArray = [];
+  bombsObj = {};
+  currentScore = 0;
+  winningScore = totalNumberOfCells - totalNumbOfBombs;
+  cellsClicked = [];
+
+  switch (difficulty) {
+    case "easy":
+      totalNumbOfBombs = 10;
+      break;
+    case "medium":
+      totalNumbOfBombs = 20;
+      break;
+    case "hard":
+      totalNumbOfBombs = 30;
+      break;
+  }
+}
+
+function generateBombs() {
+  // Random generator of bomb locations
+  while (currentNumbOfBombs < totalNumbOfBombs) {
+    const randomNumber = Math.floor(Math.random() * 100);
+    if (!bombsArray.includes(randomNumber)) {
+      bombsArray.push(randomNumber);
+      currentNumbOfBombs++;
+    }
   }
 }
 
 // Generates Grid and adds event listener to each cell
-for (let i = 0; i < 100; i++) {
-  const cell = document.createElement("div");
-  cell.classList.add("cell");
-  // add id to each cell
-  cell.id = `num-${i}`;
+function generateGrid() {
+  for (let i = 0; i < 100; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    // add id to each cell
+    cell.id = `num-${i}`;
 
-  // Add bombs to bombsobj.
-  if (bombsArray.includes(i)) {
-    let key = i;
-    bombsObj[key] = "bomb";
-    // console.log(i, bombsObj.i);
+    // Add bombs to bombsobj.
+    if (bombsArray.includes(i)) {
+      let key = i;
+      bombsObj[key] = "bomb";
+      // console.log(i, bombsObj.i);
+    }
+
+    cell.addEventListener("click", handleClick);
+
+    grid.appendChild(cell);
   }
-
-  cell.addEventListener("click", handleClick);
-
-  grid.appendChild(cell);
 }
 
 // Function to handle cell clicked
@@ -223,3 +248,13 @@ playAgainBtn.addEventListener("click", function () {
 
 // Showing where the bombs are to make testing easier
 // console.log(bombsArray);
+
+// Game start
+function gameStart() {
+  // Game variables
+  resetInitialVariables("easy");
+  generateBombs();
+  generateGrid();
+}
+
+gameStart();
