@@ -8,12 +8,13 @@ const endGameText = document.querySelector(".end-game-text");
 // Game variables
 const totalNumberOfCells = 100;
 let currentNumbOfBombs = 0;
-let totalNumbOfBombs = 0;
+let totalNumbOfBombs = 10;
 let bombsArray = [];
 let bombsObj = {};
 let currentScore = 0;
-let winningScore = 0;
+let winningScore = totalNumberOfCells - totalNumbOfBombs;
 let cellsClicked = [];
+let currentDifficulty = "easy";
 
 function resetInitialVariables(difficulty) {
   currentNumbOfBombs = 0;
@@ -71,6 +72,9 @@ function generateGrid() {
 // Reset grid
 function resetGrid() {
   grid.innerHTML = "";
+  endGameScreen.classList.remove("win");
+  endGameScreen.classList.add("hidden");
+  endGameText.innerText = "Game Over!";
 }
 
 // Function to handle cell clicked
@@ -248,24 +252,26 @@ function updateScore() {
 }
 
 playAgainBtn.addEventListener("click", function () {
-  resetGrid();
-  endGameScreen.classList.remove("win");
-  endGameScreen.classList.add("hidden");
-  endGameText.innerText = "Game Over!";
-  gameStart();
-  scoreDisplay.innerText = currentScore.toString().padStart(5, "0");
+  restartGame(currentDifficulty);
 });
 
 // Showing where the bombs are to make testing easier
 // console.log(bombsArray);
 
+// Restart game
+function restartGame(difficulty) {
+  resetGrid();
+  resetInitialVariables(difficulty);
+  gameStart();
+  scoreDisplay.innerText = currentScore.toString().padStart(5, "0");
+  console.log(currentDifficulty);
+}
+
 // Game start
 function gameStart() {
   // Game variables
-  resetInitialVariables("easy");
   generateBombs();
   generateGrid();
 }
 
 gameStart();
-console.log(grid);
