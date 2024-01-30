@@ -14,6 +14,8 @@ If the cell is empty - the number displayed will tell you how many sqaures aroun
 
 To mark a cell you think contains a bomb: hold down Shift key and click. Cell will be marked with an X, protecting the cell from being accidently mis-clicked. To remove the X/protection, hold down Shift Key and click cell again.
 
+You can select difficulty by clicking the easy, medium or hard buttons. Current difficulty is in gray.
+
 ### Inspiration
 
 After finishing the School of Code I saw that Boolean UK was hosting a week of evening taster sessions to show absolute beginners how to code retro arcade games. This seemed like a fun idea, and would be great to go back to fundamentals for practice. It was one game per two hour session, so by the end of it, we had a MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
@@ -22,7 +24,7 @@ During the bootcamp I found DOM manipulation using Javascript difficult, so deci
 
 ### Challenges I ran into
 
-The biggest challenge I ran into was adding each additional feature. I planned out each feature and how to implement it, but didn’t really think about future features. So this meant I often had to refactor existing functions into smaller ones or re-write or add to existing code. I would inadvertently add bugs doing this, which meant I had to troubleshoot and work out where they were coming from. What I thought would be simple took a lot longer than expected. I still want to add difficulty settings - but that again needs another refactor/re-write!
+The biggest challenge I ran into was adding each additional feature. I planned out each feature and how to implement it, but didn’t really think about future features. So this meant I often had to refactor existing functions into smaller ones or re-write or add to existing code. I would inadvertently add bugs doing this, which meant I had to troubleshoot and work out where they were coming from. What I thought would be simple took a lot longer than expected. I still want to add difficulty settings - but that again needs another refactor/re-write! EDIT: Re-factored code, into functions, wasn't as painful as I originally thought. It's now all done.
 
 ### What I would do differently next time
 
@@ -37,7 +39,7 @@ I am really proud that I managed to get a working Minesweeper game working. How 
 
 ### What's next?
 
-I want to add difficulty setting. <br>
+~~I want to add difficulty setting. ~~ <br>
 Add tests to make sure each function does it's intended job.<br>
 Game was designed with desktop in mind, so shift key + click isn't easy/possible with mobile. Need to come up with a solution to this. <br>
 Re-make the game using React<br>
