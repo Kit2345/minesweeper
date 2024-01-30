@@ -68,6 +68,11 @@ function generateGrid() {
   }
 }
 
+// Reset grid
+function resetGrid() {
+  grid.innerHTML = "";
+}
+
 // Function to handle cell clicked
 function handleClick(event) {
   // Extracts just number from id of div
@@ -243,7 +248,12 @@ function updateScore() {
 }
 
 playAgainBtn.addEventListener("click", function () {
-  location.reload();
+  resetGrid();
+  endGameScreen.classList.remove("win");
+  endGameScreen.classList.add("hidden");
+  endGameText.innerText = "Game Over!";
+  gameStart();
+  scoreDisplay.innerText = currentScore.toString().padStart(5, "0");
 });
 
 // Showing where the bombs are to make testing easier
@@ -258,3 +268,4 @@ function gameStart() {
 }
 
 gameStart();
+console.log(grid);
