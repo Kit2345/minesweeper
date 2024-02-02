@@ -5,7 +5,7 @@
 ## How to play the game
 
 Aim of the game:
-Click all squares without finding a bomb. There are 10 in total.
+Click all squares without finding a bomb. There are 10 in total (in easy mode)
 
 How to play:
 Click any cell to reveal it's contents. Will it be a bomb?
