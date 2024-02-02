@@ -18,7 +18,8 @@ You can select difficulty by clicking the easy, medium or hard buttons. Current 
 
 ### Inspiration
 
-After finishing the School of Code I saw that Boolean UK was hosting a week of evening taster sessions to show absolute beginners how to code retro arcade games. This seemed like a fun idea, and would be great to go back to fundamentals for practice. It was one game per two hour session, so by the end of it, we had a MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
+After finishing the School of Code I saw that Boolean UK was hosting a week of evening taster sessions to show absolute beginners how to code retro arcade games.
+I still remember getting my first PC and the many hours playing minesweeper and solitaire. So seemed like a fun idea to try and relive those memories by coding instead of playing! It would also be great to go back to fundamentals for practice. It was one game per two hour session, so by the end of it, we had a MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
 
 During the bootcamp I found DOM manipulation using Javascript difficult, so decided to code it all from scratch as practice. It was thoroughly enjoyable and it's great seeing something come to life step by step.
 
