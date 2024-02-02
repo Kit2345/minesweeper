@@ -12,7 +12,7 @@ Click any cell to reveal it's contents. Will it be a bomb?
 
 If the cell is empty - the number displayed will tell you how many squares around it contain bombs.
 
-To mark a cell you think contains a bomb: hold down Shift key and click. Cell will be marked with an X, protecting the cell from being accidentally mis-clicked. To remove the X/protection, hold down Shift Key and click cell again.
+To mark a cell you think contains a bomb: hold down Shift key and click. Cell will be marked with an X, protecting the cell from being accidentally mis-clicked. To remove the X/protection, hold down Shift Key and click cell again. (Feature not tested on mobile, on my to do list).
 
 You can select difficulty by clicking the easy, medium or hard buttons. Current difficulty is in gray.
 
