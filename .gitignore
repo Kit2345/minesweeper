@@ -1,3 +1,5 @@
 # Learnings doc
 learning.txt
 *.log
+
+node_modules
