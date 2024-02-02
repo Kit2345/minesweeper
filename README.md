@@ -23,7 +23,7 @@ I still remember getting my first PC and the many hours playing minesweeper and 
 
 By the end of the minesweeper taster session we had a basic MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
 
-During the bootcamp I found DOM manipulation using Javascript difficult, so decided to code it all from scratch as practice. It was thoroughly enjoyable and it's great seeing something come to life step by step.
+During the bootcamp I found DOM manipulation using Javascript difficult, so decided to code it all from scratch as practice. It was thoroughly enjoyable and it's great seeing something come to life step by step. I had so much fun that I decided to add additional features to the basic MVP covered in the taster session.
 
 ### Challenges I ran into
 
