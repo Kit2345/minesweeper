@@ -18,14 +18,16 @@ You can select difficulty by clicking the easy, medium or hard buttons. Current 
 
 ### Inspiration
 
-After finishing the School of Code I saw that Boolean UK was hosting a week of evening taster sessions to show absolute beginners how to code retro arcade games.
-I still remember getting my first PC and the many hours playing minesweeper and solitaire. So seemed like a fun idea to try and relive those memories by coding instead of playing! It would also be great to go back to fundamentals for practice. It was one game per two hour session, so by the end of it, we had a MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
+After finishing the School of Code I saw that Boolean UK was hosting a week of evening taster session to show absolute beginners how to code retro arcade games.
+I still remember getting my first PC and the many hours playing minesweeper and solitaire. So seemed like a fun idea to try and relive those memories by coding instead of playing! It would also be great to go back to fundamentals for practice.
+
+By the end of the minesweeper taster session we had a basic MVP minesweeper game, click a cell and it reveals whether there is a bomb present or not.
 
 During the bootcamp I found DOM manipulation using Javascript difficult, so decided to code it all from scratch as practice. It was thoroughly enjoyable and it's great seeing something come to life step by step.
 
 ### Challenges I ran into
 
-The biggest challenge I ran into was adding each additional feature. I planned out each feature and how to implement it, but didn’t really think about future features. So this meant I often had to refactor existing functions into smaller ones or re-write or add to existing code. I would inadvertently add bugs doing this, which meant I had to troubleshoot and work out where they were coming from. What I thought would be simple took a lot longer than expected. I still want to add difficulty settings - but that again needs another refactor/re-write! EDIT: Re-factored code, into functions, wasn't as painful as I originally thought. It's now all done.
+The biggest challenge I ran into was adding each additional feature. I planned out each feature and how to implement it, but didn’t really think about future features. So this meant I often had to refactor existing functions into smaller ones or re-write or add to existing code. I would inadvertently add bugs doing this, which meant I had to troubleshoot and work out where they were coming from. What I thought would be simple took a lot longer than expected. I still want to add difficulty settings - but that again needs another refactor/re-write! EDIT: Re-factored code, into functions, wasn't as painful as I originally thought.
 
 ### What I would do differently next time
 
