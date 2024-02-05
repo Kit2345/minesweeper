@@ -48,6 +48,7 @@ Add tests to make sure each function does it's intended job.<br>
 Game was designed with desktop in mind, so shift key + click isn't easy/possible with mobile. Need to come up with a solution to this. <br>
 Re-make the game using React<br>
 Add feature so first click can't be a bomb (thanks Andy and Marika for suggestion) <br>
+Add feature to keep track of score locally. New game, scores add to it, until bomb clicked. (Thanks Steven Smith for the suggestion)<br>
 
 ### Built with
 
